@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Profiles</title>
+        <link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='style.css')}}">
+    </head>
+    <body>
+        <h2>Twenty people list</h2>
+            <a href="{{ url_for('index')}}"><button class="home"> HOME</button></a>
+        <div class="main">
+            {% for item in people %}
+                <div class="profile">
+                    <a href="{{ url_for('account', id = item.ident - 1)}}"><img class = "profilepic" src= "{{ url_for('static', filename='pictures/profilePic/' + item.strId + '.jpg') }}" alt="default"></a>
+                    <div class="name">
+                        <a href="{{ url_for('account', id = item.ident - 1)}}">
+                            <p>
+                                {{ item.firstName }} <br />
+                                {{ item.surName }} <br />
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </body>
+</html>

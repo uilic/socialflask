@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href = "{{ url_for('static', filename='style.css')}}">
+        <meta charset="utf-8">
+        <title>sdasd</title>
+    </head>
+    <body>
+        <a href="{{ url_for('index')}}"><button class="home"> HOME</button></a>
+        <a href="{{ url_for('profiles')}}"><button class="home"> PROFILES</button></a>
+        <div class="mainprof">
+            <div class="picname">
+                <img class = "profileimage" src="{{ url_for('static', filename='pictures/profilePic/' + human.strId + '.jpg') }}" alt="default">
+                <h3>{{ human.firstName }} {{ human.surName }}</h3>
+            </div>
+            <div class="details">
+                <p><span style="font-weight:bold" >Age:</span> {{ human.age }}</p>
+                <p><span style="font-weight:bold" >Gender:</span> {{ human.gender }}</p>
+                <p><span style="font-weight:bold" >ID:</span> {{ human.ident }}</p>
+            </div>
+            <hr>
+            <h4>Friends</h4>
+            <div class="friends">
+                    {% for item in friends %}
+                        <div class="profile">
+                            <a href="{{ url_for('account', id = item.ident - 1)}}"><img class = "profilepic" src="{{ url_for('static', filename='pictures/profilePic/' + item.strId + '.jpg') }}" alt="default"></a>
+                            <div class="name">
+                                <a href="{{ url_for('account', id = item.ident - 1)}}">
+                                    <p>
+                                        {{ item.firstName }} <br />
+                                        {{ item.surName }} <br />
+                                    </p>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+            </div>
+            <hr>
+            <h4>Friends of friends</h4>
+            <div class="friends">
+                {% for item in frof %}
+                    <div class="profile">
+                        <a href="{{ url_for('account', id = item.ident - 1)}}"><img class = "profilepic" src="{{ url_for('static', filename='pictures/profilePic/' + item.strId + '.jpg') }}" alt="default"></a>
+                        <div class="name">
+                            <a href="{{ url_for('account', id = item.ident - 1)}}">
+                                <p>
+                                    {{ item.firstName }} <br />
+                                    {{ item.surName }} <br />
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <hr>
+            <h4>suggestedFriends</h4>
+            <div class="friends">
+                {% for item in sug %}
+                    <div class="profile">
+                        <a href="{{ url_for('account', id = item[0].ident - 1)}}"><img class = "profilepic" src="{{ url_for('static', filename='pictures/profilePic/' + item[0].strId + '.jpg') }}" alt="default"></a>
+                        <div class="name">
+                            <a href="{{ url_for('account', id = item[0].ident - 1)}}">
+                                <p>
+                                    {{ item[0].firstName }} <br />
+                                    {{ item[0].surName }} <br />
+                                    <span style="font-size:12px" >( {{item[1]}} mutual friends )</span>
+                                </p>
+                            </a>
+                        </div>
+                        <span
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>
