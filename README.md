@@ -1,4 +1,4 @@
-# SPLIT POLYGON
+# TWENTY FRIENDS APP
 
 ## Author
 
