@@ -1,5 +1,5 @@
 
-class human:
+class Human:
     """Class human with the atributes given in the data.json file, and also with
         one extra atribute, string ID for easier work with picture urls"""
 
@@ -17,7 +17,7 @@ class human:
         for g in group:
             for i in self.friendsId:
                 if i == g.ident:
-                    h = human(g.ident, g.firstName, g.surName, g.age, g.gender, g.friendsId)
+                    h = Human(g.ident, g.firstName, g.surName, g.age, g.gender, g.friendsId)
                     friendsList.append(h)
         return friendsList
 
@@ -27,7 +27,7 @@ class human:
         for f in self.getFriends(group):
             for fre in f.getFriends(group):
                 if fre.ident not in self.friendsId + fofId and fre.ident != self.ident:
-                    h = human(fre.ident, fre.firstName, fre.surName,
+                    h = Human(fre.ident, fre.firstName, fre.surName,
                               fre.age, fre.gender, fre.friendsId)
                     friendsOfFriendsList.append(h)
                     fofId.append(h.ident)
