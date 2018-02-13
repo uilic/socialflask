@@ -1,5 +1,5 @@
 import json
-from people import human
+from people import Human
 
 
 def loadGroup():
@@ -20,7 +20,7 @@ def loadGroup():
         gender = peop.get("gender")
         friends = peop.get("friends")
 
-        h = human(ident, firstName, surName, age, gender, friends)
+        h = Human(ident, firstName, surName, age, gender, friends)
         people.append(h)
 
     return people
